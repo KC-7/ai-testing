@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <title>eTravel|.Guru</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta name="description" content="Site Creator: KC-7, Topic: Travel, Category: Planning, Price: FREE">
+</head>
+
+<body>
+  <h1>eTravel.Guru</h1>
+  <h2>Plan Your Dream Holiday!</h2>
+  <form id="holiday-form">
+    <label for="destination">Where would you like to go?</label>
+    <input type="text" name="destination" id="destination"><br>
+
+    <label for="budget">What's your budget?</label>
+    <input type="text" name="budget" id="budget"><br>
+
+    <label for="duration">How long do you want to stay?</label>
+    <input type="text" name="duration" id="duration"><br>
+
+    <label for="activities">What activities do you want to do?</label>
+    <input type="text" name="activities" id="activities"><br>
+
+    <label for="accommodation">What type of accommodation do you prefer?</label>
+    <input type="text" name="accommodation" id="accommodation"><br>
+
+    <input type="submit" value="Plan My Ideal Holiday">
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('holiday-form');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const response = await fetch('/generate_itinerary', {
+        method: 'POST',
+        body: formData
+      });
+
+      const itinerary = await response.text();
+      resultDiv.innerText = itinerary;
+    });
+  </script>
+</body>
+
+</html>
