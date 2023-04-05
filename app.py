@@ -39,7 +39,7 @@ def generate_itinerary():
       engine="text-davinci-003",
       prompt=input_text,
       temperature=0.7,
-      max_tokens=1250,
+      max_tokens=750,
       top_p=1,
       frequency_penalty=0,
       presence_penalty=0
