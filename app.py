@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request
 import openai
 import env
-import os
+
+if os.path.isfile('env.py'):
+    import env
 
 app = Flask(__name__)
-openai.api_key = os.environ["OPENAI_API_KEY"]
+openai.api_key = os.environ.get["OPENAI_API_KEY"]
 
 
 @app.route('/')
