@@ -11,32 +11,85 @@
 <body>
   <h1>eTravel.Guru</h1>
   <h2>Plan Your Dream Holiday!</h2>
+  <h4>Feel free to leave any of the fields blank, just enter anything that is applicable and hit sumbit.</h3>
+
   <form id="holiday-form">
+
     <label for="destination">Where would you like to go?</label>
     <input type="text" name="destination" id="destination"><br>
 
-    <label for="budget">What's your budget?</label>
-    <input type="text" name="budget" id="budget"><br>
-
-    <label for="duration">How long do you want to stay?</label>
+    <label for="duration">How long would you like to go for?</label>
     <input type="text" name="duration" id="duration"><br>
 
-    <label for="activities">What activities do you want to do?</label>
+    <label for="climate">What is your ideal climate or weather for a vacation?</label>
+    <input type="text" name="climate" id="climate"><br>
+
+    <label for="activities">Are you interested in outdoor activities or indoor activities or a combination of
+      both?</label>
     <input type="text" name="activities" id="activities"><br>
 
-    <label for="accommodation">What type of accommodation do you prefer?</label>
+    <label for="group">Are you traveling solo or with a group? If with a group, how many people are you traveling
+      with?</label>
+    <input type="text" name="group" id="group"><br>
+
+    <label for="accommodation">What type of accommodation do you prefer (e.g., hotel, resort, Airbnb, etc.)?</label>
     <input type="text" name="accommodation" id="accommodation"><br>
 
-    <input type="submit" value="Plan My Ideal Holiday">
+    <label for="relaxing">Do you prefer a relaxing or an adventurous vacation?</label>
+    <input type="text" name="relaxing" id="relaxing"><br>
+
+    <label for="cuisine">What type of cuisine do you enjoy?</label>
+    <input type="text" name="cuisine" id="cuisine"><br>
+
+    <label for="attractions">Are there any specific landmarks, attractions, or experiences you would like to see or
+      do?</label>
+    <input type="text" name="attractions" id="attractions"><br>
+
+    <label for="transportation">What is your preferred mode of transportation?</label>
+    <input type="text" name="transportation" id="transportation"><br>
+
+    <label for="cultural">Are you interested in cultural experiences or historical sites?</label>
+    <input type="text" name="cultural" id="cultural"><br>
+
+    <label for="hobbies">Are you interested in any specific hobbies or interests that could be incorporated into your
+      vacation (e.g., surfing, yoga, wine tasting, etc.)?</label>
+    <input type="text" name="hobbies" id="hobbies"><br>
+
+    <label for="itinerary">Do you prefer a more structured itinerary or would you like more freedom to explore and
+      create your own schedule?</label>
+    <input type="text" name="itinerary" id="itinerary"><br>
+
+    <label for="other">Is there anything else that you think would be helpful for me to know in planning your dream
+      vacation?</label>
+    <input type="text" name="other" id="other"><br>
+
+    <input type="submit" class="submit" id="submit-button" value="Plan My Ideal Holiday!">
+
+    <div id="loading" class="hide">
+      We received your details and are planning your trip... it wont take long!<br>
+      <img src="https://res.cloudinary.com/dqrrhj2ml/image/upload/v1680712713/Magnify-1.6s-200px_po7d7j.svg" alt="Loading spinner">
+    </div>
+
   </form>
 
-  <div id="result"></div>
+  <div id="result" class="hide result">
+    <!-- The AI result will appear here once generated. -->
+  </div>
+
+  <div id="restart-div">
+    <button id="restart-button" onclick='location.reload();' class="submit hide">Start again?</button>
+  </div>
 
   <script>
     const form = document.getElementById('holiday-form');
     const resultDiv = document.getElementById('result');
+    const submitButton = document.getElementById('submit-button');
+    const loadingText = document.getElementById('loading');
+    const restartButton = document.getElementById('restart-button');
 
     form.addEventListener('submit', async (event) => {
+      submitButton.classList.add('hide');
+      loadingText.classList.remove('hide');
       event.preventDefault();
 
       const formData = new FormData(form);
@@ -47,6 +100,9 @@
 
       const itinerary = await response.text();
       resultDiv.innerText = itinerary;
+      form.classList.add('hide');
+      resultDiv.classList.remove('hide');
+      restartButton.classList.remove('hide');
     });
   </script>
 </body>

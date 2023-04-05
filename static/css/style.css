@@ -1,23 +1,24 @@
 /* Set the background color to light gray */
 body {
   background-color: #f0f0f0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Style Headings */
 
-h1, h2 {
-  font-family: Arial, Helvetica, sans-serif;
+h1, h2, h3, h4 {
   color: #3e8e41;
   text-align: center;
 }
 
 /* Center the form horizontally and vertically */
 #holiday-form {
-  width: 800px;
-  height: 435px;
+  width: 1200px;
+  height: 100%;
   background-color: white;
   margin: auto;
   margin-top: 50px;
+  margin-bottom: 50px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -39,7 +40,7 @@ input[type="text"] {
   font-size: 1.2em;
 }
 
-input[type="submit"] {
+.submit {
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
@@ -49,19 +50,47 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
+.submit:hover {
   background-color: #3e8e41;
 }
 
 /* Style Result */
 
-#result {
+#loading {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+img {
   display: block;
-  padding: 50px;
-  margin: 25px;
-  font-size: 1.5em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: purple;
+  margin: 0 auto;
+}
+
+.result {
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1.2em;
+  color: darkgreen;
+  width: 1200px;
+  height: 100%;
+  background-color: rgb(169, 198, 160);
+}
+
+.hide {
+  display: none;
+}
+
+#restart-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 50px;
 }
 
 /* Media queries for smaller devices */
